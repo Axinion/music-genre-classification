@@ -4,13 +4,15 @@ import librosa
 import librosa.display
 import numpy as np
 import matplotlib.pyplot as plt
+from PIL import Image
 
 # -----------------------------------
 # Cache Model Loading
 # -----------------------------------
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model('./Trained_model.keras')
+    #model = tf.keras.models.load_model('./Trained_model.keras')
+    model = tf.keras.models.load_model('models/Trained_model.keras')
     return model
 
 # ------------------------------------
@@ -130,7 +132,9 @@ if app_mode == "🏠 Home":
     """, unsafe_allow_html=True)
 
     st.markdown("## 🎶 Welcome to the Music Genre Classification System! 🎧")
-    st.image("music_genre_home.png", use_container_width=True)
+    #st.image("music_genre_home.png", use_container_width=True)
+    image = Image.open('app/assets/image.png')
+    st.image(image)
 
     st.markdown("""
         **Our goal is to help identify music genres from audio tracks efficiently. Upload an audio file, and our AI-powered system will analyze it to detect its genre. Discover the power of AI in music analysis!**
